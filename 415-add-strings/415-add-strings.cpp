@@ -13,7 +13,7 @@ public:
             int num1_val = n1_len<0 ? 0 : num1[n1_len]-'0';
             int num2_val = n2_len<0 ? 0 : num2[n2_len]-'0';
             
-            temp = prev * 10 + num1_val + num2_val +carryover;
+            temp = num1_val + num2_val +carryover;
             carryover = (num1_val + num2_val+carryover)/10;
             temp %=10;
             ans+=to_string(temp);
