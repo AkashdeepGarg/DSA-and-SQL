@@ -5,7 +5,6 @@ public:
         int carryover = 0; 
         int n1_len = num1.length()-1;
         int n2_len = num2.length()-1;
-        int prev = 0; 
         int temp = 0;
         string ans;
         
