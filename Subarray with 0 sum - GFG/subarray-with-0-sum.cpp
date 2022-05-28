@@ -15,17 +15,17 @@ class Solution{
     {
         //Your code here
         int sum=0;
-        unordered_map<int,int>m;
+        unordered_map<int,bool>m;
         for(int i=0;i<n;i++){
            sum+=arr[i];
            if(sum==0 ||  m[sum]  || arr[i]==0){
-               return 1;
+               return true;
            }
            
            else 
              m[sum]=1;
         }
-    return 0;
+    return false;
     }
 };
 
