@@ -20,7 +20,6 @@ class Solution{
            sum+=arr[i];
            if(sum==0 ||  m[sum]  || arr[i]==0){
                return 1;
-               break;
            }
            
            else 
