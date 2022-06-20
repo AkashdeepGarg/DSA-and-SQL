@@ -36,6 +36,8 @@ string isSubset(int a1[], int a2[], int n, int m) {
         if(mp.find(a2[i])==mp.end() || mp[a2[i]]==0){
             return("No");
         }
+        else
+        mp[a2[i]]--;
     }
     return("Yes");
 }
