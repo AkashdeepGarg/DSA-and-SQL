@@ -28,6 +28,7 @@ public:
         if(sum!=root->val){
             return false;
         }
-        return checkTree(root->left) && checkTree(root->right);
+        //return checkTree(root->left) && checkTree(root->right);
+        return true;
     }
 };
