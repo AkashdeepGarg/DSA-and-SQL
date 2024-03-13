@@ -20,11 +20,11 @@ public:
         int maxl = val;
         if(root->left != NULL and root->left->val >=val){
             ans++;
-            maxl = max(root->left->val,val);
+            maxl = root->left->val;
         }
         if(root->right != NULL and root->right->val >=val){
             ans++;
-            maxr = max(root->right->val,val);
+            maxr = root->right->val;
         }
         solve(root->left,maxl);
         solve(root->right,maxr);
