@@ -31,12 +31,6 @@ public:
         }
         int sum = 0;
         solve(root, low, high, sum);
-        // if(root->val > low){
-        //     sum+=rangeSumBST(root->left,low,high);
-        // }
-        // if(root->val < high){
-        //     sum+=rangeSumBST(root->right,low,high);
-        // }
         return sum;
     }
 };
