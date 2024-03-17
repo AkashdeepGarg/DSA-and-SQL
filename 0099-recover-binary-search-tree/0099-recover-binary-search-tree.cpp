@@ -59,13 +59,11 @@ class Solution {
     //     return;
     // }
     
-    
-    private: 
+private: 
     TreeNode* first;
     TreeNode* prev;
     TreeNode* middle;
     TreeNode* last; 
-private: 
     void inorder(TreeNode* root) {
         if(root == NULL) return; 
         
