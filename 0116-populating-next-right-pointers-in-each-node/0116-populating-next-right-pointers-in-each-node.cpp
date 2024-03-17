@@ -18,31 +18,49 @@ public:
 
 class Solution {
 public:
-    Node* connect(Node* root) {
+    // Node* connect(Node* root) {
+    //     if(!root){
+    //         return NULL;
+    //     }
+    //     queue<Node*> q;
+    //     q.push(root);
+    //     while(q.size()>0){
+    //         int n = q.size();
+    //         for(int i=0;i<n;i++){
+    //             Node* temp = q.front();
+    //             q.pop();
+    //             if(i!=n-1){
+    //                 temp->next = q.front();
+    //             }
+    //             if(temp->left){
+    //                 q.push(temp->left);
+    //             }
+    //             if(temp->right){
+    //                 q.push(temp->right);
+    //             }
+    //         }
+    //     }
+    //     return root;
+    // }
+    
+    
+    Node* solve(Node* root){
         if(!root){
-            return NULL;
+            return root;
         }
-        queue<Node*> q;
-        q.push(root);
-        while(q.size()>0){
-            int n = q.size();
-            for(int i=0;i<n;i++){
-                Node* temp = q.front();
-                q.pop();
-                if(i==n-1){
-                    temp->next = NULL;
-                }
-                else{
-                    temp->next = q.front();
-                }
-                if(temp->left){
-                    q.push(temp->left);
-                }
-                if(temp->right){
-                    q.push(temp->right);
-                }
-            }
-        }
+        if(root->left and root->right)
+        root->left->next = root->right;
+        if(root->next and root->right)
+        root->right->next = root->next->left;
+        solve(root->left);
+        solve(root->right);
+        
         return root;
+    }
+    Node* connect(Node* root){
+        if(!root){
+            return root;
+        }
+        return solve(root);
     }
 };
