@@ -11,13 +11,30 @@ public:
         // }
         // return 0;
         
-        map<int,int> mp;
-        for(int i=0;i<nums.size();i++){
-            if(mp[nums[i]]>0){
-                return nums[i];
-            }
-            mp[nums[i]]++;
+        //TC O(N), SC O(N)
+        // map<int,int> mp;
+        // for(int i=0;i<nums.size();i++){
+        //     if(mp[nums[i]]>0){
+        //         return nums[i];
+        //     }
+        //     mp[nums[i]]++;
+        // }
+        // return nums[0];
+        
+        int slow = 0;
+        int fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
         }
-        return nums[0];
+        
+        return slow;
+        
     }
 };
