@@ -7,13 +7,20 @@ public:
             maxe = max(maxe,nums[i]);
         }
         long long ans=0;
-        map<int,int> mp;
+        int count=0;
+        // map<int,int> mp;
         int i=0,j=0;
         while(j<n){
-            mp[nums[j]]++;
-            while(mp[maxe] >=k){
+            // mp[nums[j]]++;
+            if(nums[j]==maxe){
+                count++;
+            }
+            while(count >=k){
                 ans= ans+n-j;
-                mp[nums[i]]--;
+                if(nums[i]==maxe){
+                count--;
+            }
+                // mp[nums[i]]--;
                 i++;
             }
             j++;
