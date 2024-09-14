@@ -1,19 +1,30 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int n=nums.size();
-        map<int,int> mp;
-        for(int i=0;i<n;i++){
-            mp[nums[i]]++;
-        }
-        int ans = INT_MIN;
-        int a;
-        for(auto x: mp){
-            if(ans<x.second){
-                ans = max(ans,x.second);
-                a = x.first;
+        int num = nums[0];
+        int count = 1;
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]==num){
+                count++;
+            }
+            else{
+                    count--;
+                    if(count==0){
+                        num=nums[i];
+                        count=1;
+                    }
             }
         }
-        return a;
+        int freq=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==num){
+                freq++;
+            }
+        }
+        if(freq>nums.size()/2){
+            return num;
+        }
+        
+        return -1;
     }
 };
