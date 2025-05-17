@@ -1,41 +1,31 @@
 class Solution {
 public:
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
-        priority_queue<pair<int,pair<int, int>>,vector<pair<int,pair<int, int>>>, greater<pair<int,pair<int, int>>>> q;
         int n = grid.size();
-        int m = grid[0].size();
-
-        vector<vector<int>> visited(n,(vector<int>(m,0)));
-
-        if (grid[0][0] != 0 || grid[n - 1][m - 1] != 0) {
-            return -1;
-        }
-
-        q.push({1,{0, 0}});
-        visited[0][0] = 1;
-
-        // int di[] = {-1, 1, 0, 0};
-        // int dj[] = {0, 0, 1, -1};
+        if(grid[0][0]!=0 || grid[n-1][n-1]!=0)
+        return -1;
+        vector<vector<int>> visited(n,vector<int>(n,0));
 
         int di[] = {-1, -1, -1, 0, 0, 1, 1, 1};
         int dj[] = {-1, 0, 1, -1, 1, -1, 0, 1};
-
-        while (q.size() > 0) {
-            int x = q.top().second.first;
-            int y = q.top().second.second;
-            int dist = q.top().first;
-            if (x == n - 1 && y == m - 1) {
-                return dist;
+        visited[0][0]=1;
+        queue<pair<pair<int,int>,int>> pq;
+        pq.push({{0,0},1});
+        while(pq.size()>0){
+            auto t =pq.front();
+            pq.pop();
+            int i = t.first.first;
+            int j = t.first.second;
+            int d = t.second;
+            if(i==n-1 && j==n-1){
+                return d;
             }
-            q.pop();
-
-            for (int i = 0; i < 8; i++) {
-                int X = x + di[i];
-                int Y = y + dj[i];
-
-                if (X >= 0 && Y >= 0 && X < n && Y < m && grid[X][Y] == 0 && visited[X][Y]==0) {
-                    q.push({1 + dist,{X, Y}});
-                    visited[X][Y]=1;
+            for(int k = 0;k<8;k++){
+                int row = i+di[k];
+                int col = j+dj[k];
+                if(row>=0 && col>=0 && row<n && col<n && grid[row][col]==0 && visited[row][col]==0){
+                    visited[row][col]=1;
+                    pq.push({{row,col}, 1+d});
                 }
             }
         }
