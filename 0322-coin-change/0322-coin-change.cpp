@@ -26,9 +26,10 @@ public:
         }
         return dp[n][amount];
     }
+    
     int coinChange(vector<int>& coins, int amount) {
         int n = coins.size();
-        sort(coins.begin(),coins.end());
+        // sort(coins.begin(),coins.end());
         vector<vector<int>> dp(n+1,vector<int>(amount+1,-1));
         
         int temp = solve(coins,n,amount,dp);
