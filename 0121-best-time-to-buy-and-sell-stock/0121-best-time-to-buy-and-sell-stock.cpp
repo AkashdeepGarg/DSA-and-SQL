@@ -10,12 +10,9 @@ public:
             int temp = prices[j]-prices[i];
             if(temp<0){
                 i=j;
-                j++;
             }
-            else{
                 j++;
                 ans = max(ans,temp);
-            }
         }
 
         return ans;
